@@ -45,7 +45,6 @@ public class LocalizationRest {
 		List<Provincia> listaProv = new ArrayList<Provincia>();
 		
 		try {
-			//listaProv = localizacionService.buscarProvincias();	
 			listaProv = localizacionService.getProvincias();
 			response.setSuccess(true);
 		} catch (Exception e) {
@@ -71,7 +70,6 @@ public class LocalizationRest {
 				return response;
 			}
 			listaPart = localizacionService.getPartidosProvincia(Long.valueOf(fkey));	
-			//listaPart = localizacionService.buscarPartidosPorIdProvincia(Long.valueOf(fkey));
 			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setSuccess(false);
@@ -96,7 +94,6 @@ public class LocalizationRest {
 				return response;
 			}
 			listaLocal = localizacionService.getLocalidadesPartido(Long.valueOf(fkey));
-			//listaLocal = localizacionService.buscarLocalidadesPorIdPartido(Long.valueOf(fkey));
 			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setSuccess(false);
@@ -120,7 +117,6 @@ public class LocalizationRest {
 				return response;
 			}
 			listaArea = localizacionService.getAreasLocalidad(Long.valueOf(fkey));
-			//listaArea = localizacionService.buscarAreasPorIdLocalidad(Long.valueOf(fkey));
 			response.setSuccess(true);
 			
 		} catch (Exception e) {

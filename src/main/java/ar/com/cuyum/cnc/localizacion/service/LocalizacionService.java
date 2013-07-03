@@ -25,23 +25,12 @@ public class LocalizacionService {
 	@Inject
 	private EntityManager em;
 	
-//	@SuppressWarnings("unchecked")
-//	public List<Provincia> buscarProvincias(){
-//		List<Provincia> prov = em.createQuery("select a from Provincia a order by a.nombre").getResultList();
-//		return prov;
-//	}
-	
 	@SuppressWarnings("unchecked")
 	public List<Provincia> getProvincias(){
 		List<Provincia> prov = em.createQuery("select a from Provincia a order by a.nombre").getResultList();
 		return prov;
 	}
 	
-//	@SuppressWarnings("unchecked")
-//	public List<Partido> buscarPartidosPorIdProvincia(Long idProv){
-//		List<Partido> part = em.createQuery("select a from Partido a where a.idProvincia="+idProv+" order by a.nombre").getResultList();
-//		return part;
-//	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Partido> getPartidosProvincia(Long idProvincia){
@@ -50,15 +39,7 @@ public class LocalizacionService {
 			.getResultList();
 	return lstPartidos;
 }
-	
-//	@SuppressWarnings("unchecked")
-//	public List<Localidad> buscarLocalidadesPorIdPartido(Long idPart){
-//		//TODO: recuperar esta forma cuando vengan las listas nuevas
-//		//List<Localidad> loc = em.createQuery("select distinct(a) from Localidad a where a.idPartido="+idPart+" order by (a.nombre)").getResultList();
-//		//Por ahora... como hay repetidos
-//		List<Object> loc = em.createQuery("select distinct(a.id), a.nombre from Localidad a where a.idPartido="+idPart+" order by a.nombre").getResultList();
-//		return toListLocalidad(loc);
-//	}
+
 	
 	@SuppressWarnings("unchecked")
 	public List<Localidad> getLocalidadesPartido(Long idPartido){		
@@ -67,12 +48,7 @@ public class LocalizacionService {
 				.getResultList();
 		return lstLocalidades;
 	}
-	
-//	@SuppressWarnings("unchecked")
-//	public List<Area> buscarAreasPorIdLocalidad(Long idLoc){
-//		List<Area> prov = em.createQuery("select distinct(a) from Area a, Localidad b where b.id="+idLoc +" and a.id=b.idArea order by a.nombre").getResultList();
-//		return prov;
-//	}
+
 	
 	@SuppressWarnings("unchecked")
 	public List<Area> getAreasLocalidad(Long idLocalidad){
@@ -101,29 +77,6 @@ public class LocalizacionService {
 		return lstAccesosServicio;
 	}
 	
-	/**
-	 * Convierte a lista soportada para un formato correcto de Json
-	 * @param lstObjects
-	 * @return
-	 */
-//	private List<Localidad> toListLocalidad (List<Object> lstObjects){
-//		List<Localidad> lstLocalidad = new ArrayList<Localidad>();
-//		if (null != lstObjects){
-//			Localidad itemLocalidad;
-//			Object[] objLoc;
-//			for (Object loc : lstObjects) {
-//				objLoc = (Object[])loc;
-//				if (null != objLoc && objLoc.length >=2){					
-//					itemLocalidad = new Localidad();
-//					itemLocalidad.setId((Long)objLoc[0]);
-//					itemLocalidad.setNombre((String)objLoc[1]);
-//					lstLocalidad.add(itemLocalidad);
-//				}
-//			}
-//		}			
-//		return lstLocalidad;
-//	}
-	
 	@SuppressWarnings("unchecked")
 	public List<Prestador> buscarPrestadores(){
 		List<Prestador> lstPrestadores = em.createQuery("select p from Prestador p " +
@@ -134,4 +87,3 @@ public class LocalizacionService {
 		return lstPrestadores;
 	}
 }
-
