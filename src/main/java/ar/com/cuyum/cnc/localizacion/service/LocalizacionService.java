@@ -29,7 +29,7 @@ public class LocalizacionService {
 		StringBuilder query = new StringBuilder();
 		query.append("select p from Provincia p ");
 		if(term!=null){
-			query.append("and p.nombre like '%"+term+"%' ");
+			query.append("where p.nombre like '%"+term+"%' ");
 		}
 		query.append("order by p.nombre");
 		
@@ -48,7 +48,7 @@ public class LocalizacionService {
 		StringBuilder query = new StringBuilder();
 		query.append("select p from Provincia p ");
 		if(term!=null){
-			query.append("and lower(p.nombre) like '%"+term+"%' ");
+			query.append("where lower(p.nombre) like '%"+term+"%' ");
 		}
 		query.append("order by p.nombre");
 		
@@ -64,7 +64,7 @@ public class LocalizacionService {
 		StringBuilder query = new StringBuilder();
 		query.append("select count(*) from Provincia p ");
 		if(term!=null){
-			query.append("and p.nombre like'%"+term+"%' ");
+			query.append("where p.nombre like'%"+term+"%' ");
 		}
 		
 		return (Long)em.createQuery(query.toString())
