@@ -110,9 +110,10 @@ localizacion/sql/otrasTablas.sql (inserción de datos de proveedores ...)
 Para obtener la lista de prestadores.
 
 Hacer un POST a 
-http://<localhost:8080>/localizacion/rest/localizaciones/prestadores
+http://<localhost:8080>/localizacion/rest/localizaciones/prestadores?page={LONG}&limit={INTEGER}[&term={STRING}]
 
-como respuesta se obtiene un JSON del tipo:
+como respuesta se deberá obtener como mínimo un JSON con la siguiente estructura:
+{"total":_number_,"success":_boolean_,"result":[{"id":_num_,"text":_string_}]}
 
 
 
