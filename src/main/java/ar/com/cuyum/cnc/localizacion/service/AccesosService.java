@@ -14,31 +14,37 @@ import ar.com.cuyum.cnc.localizacion.model.Servicio;
 @Stateless
 @Named(value = "accesosService")
 public class AccesosService {
-	public static int PRESTADOR_ACTIVO = 1; 
-	public static int PRESTADOR_INACTIVO = 2;
 	
 	@Inject
 	private EntityManager em;
 	
-	
 	@SuppressWarnings("unchecked")
-	public List<Acceso> buscarAccesosPorIdServicio(String idServicio){
+	public List<Acceso> buscarAccesosPorIdServicio(String idServicio,String term){
 		List<Acceso> lstAccesos = null;
 		List<Acceso> lstAccesosServicio = new ArrayList<Acceso>();
-		List<Servicio> lstServicios = em.createQuery("select s from Servicio s where s.id= :servicio")
+		StringBuilder query = new StringBuilder();
+		query.append("select s from Servicio s ");
+		query.append("where s.id=:servicio ");
+		List<Servicio> lstServicios = em.createQuery(query.toString())
 				.setParameter("servicio", idServicio)
 				.getResultList();
+		
 		if (null != lstServicios && !lstServicios.isEmpty()){
 			Servicio selectedService = lstServicios.get(0);
 			lstAccesos = selectedService.getAccesos();
 		}
 		if (null != lstAccesos && !lstAccesos.isEmpty()){
 			for (Acceso itemAcceso : lstAccesos) {
-				lstAccesosServicio.add(itemAcceso);
+				if(null != term){
+					if (itemAcceso.getNombre().toLowerCase().contains(term.toLowerCase())) {
+						lstAccesosServicio.add(itemAcceso);
+					}
+				} else {
+					lstAccesosServicio.add(itemAcceso);
+				}
 			}			
 		}		
 		return lstAccesosServicio;
 	}
-	
-	
+
 }
