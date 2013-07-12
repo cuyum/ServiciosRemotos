@@ -36,7 +36,7 @@ public class AccesosService {
 		if (null != lstAccesos && !lstAccesos.isEmpty()){
 			for (Acceso itemAcceso : lstAccesos) {
 				if(null != term){
-					if (itemAcceso.getNombre().toLowerCase().contains(term.toLowerCase())) {
+					if (itemAcceso.getNombre().toLowerCase().startsWith(term.toLowerCase())) {
 						lstAccesosServicio.add(itemAcceso);
 					}
 				} else {

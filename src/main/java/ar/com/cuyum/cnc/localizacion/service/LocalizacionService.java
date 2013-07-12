@@ -29,7 +29,7 @@ public class LocalizacionService {
 		StringBuilder query = new StringBuilder();
 		query.append("select p from Provincia p ");
 		if(term!=null){
-			query.append("where lower(p.nombre) like '%"+term+"%' ");
+			query.append("where lower(p.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		query.append("order by p.nombre");
 		
@@ -48,7 +48,7 @@ public class LocalizacionService {
 		StringBuilder query = new StringBuilder();
 		query.append("select p from Provincia p ");
 		if(term!=null){
-			query.append("where lower(p.nombre) like '%"+term+"%' ");
+			query.append("where lower(p.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		query.append("order by p.nombre");
 		
@@ -64,7 +64,7 @@ public class LocalizacionService {
 		StringBuilder query = new StringBuilder();
 		query.append("select count(*) from Provincia p ");
 		if(term!=null){
-			query.append("where lower(p.nombre) like'%"+term+"%' ");
+			query.append("where lower(p.nombre) like'"+term.toLowerCase()+"%' ");
 		}
 		
 		return (Long)em.createQuery(query.toString())
@@ -79,7 +79,7 @@ public class LocalizacionService {
 		query.append("select p from Partido p ");
 		query.append("where p.idProvincia=:provincia ");
 		if(term!=null){
-			query.append("and lower(p.nombre) like '%"+term+"%' ");
+			query.append("and lower(p.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		query.append("order by p.nombre");
 		
@@ -99,7 +99,7 @@ public class LocalizacionService {
 		query.append("select p from Partido p ");
 		query.append("where p.idProvincia=:provincia ");
 		if(term!=null){
-			query.append("and lower(p.nombre) like '%"+term+"%' ");
+			query.append("and lower(p.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		query.append("order by p.nombre");
 		
@@ -116,7 +116,7 @@ public class LocalizacionService {
 		query.append("select count(*) from Partido p ");
 		query.append("where p.idProvincia=:provincia ");
 		if(term!=null){
-			query.append("and lower(p.nombre) like '%"+term+"%' ");
+			query.append("and lower(p.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		
 		return (Long)em.createQuery(query.toString())
@@ -133,7 +133,7 @@ public class LocalizacionService {
 		query.append("select l from Localidad l ");
 		query.append("where l.idPartido= :partido ");
 		if(term!=null){
-			query.append("and lower(l.nombre) like '%"+term+"%' ");
+			query.append("and lower(l.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		query.append("order by l.nombre");
 		
@@ -154,7 +154,7 @@ public class LocalizacionService {
 		query.append("select l from Localidad l ");
 		query.append("where l.idPartido= :partido ");
 		if(term!=null){
-			query.append("and lower(l.nombre) like '%"+term+"%' ");
+			query.append("and lower(l.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		query.append("order by l.nombre");
 		
@@ -172,7 +172,7 @@ public class LocalizacionService {
 		query.append("select count(*) from Localidad l ");
 		query.append("where l.idPartido=:partido ");
 		if(term!=null){
-			query.append("and lower(l.nombre) like '%"+term+"%' ");
+			query.append("and lower(l.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		
 		return (Long)em.createQuery(query.toString())
@@ -189,7 +189,7 @@ public class LocalizacionService {
 		query.append("select a from Area a ");
 		query.append("where a.idLocalidad= :localidad ");
 		if(term!=null){
-			query.append("and lower(a.nombre) like '%"+term+"%' ");
+			query.append("and lower(a.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		query.append("order by a.nombre");
 		
@@ -209,7 +209,7 @@ public class LocalizacionService {
 		query.append("select a from Area a ");
 		query.append("where a.idLocalidad= :localidad ");
 		if(term!=null){
-			query.append("and lower(a.nombre) like '%"+term+"%' ");
+			query.append("and lower(a.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		query.append("order by a.nombre");
 		
@@ -226,7 +226,7 @@ public class LocalizacionService {
 		query.append("select count(*) from Area a ");
 		query.append("where a.idLocalidad=:localidad ");
 		if(term!=null){
-			query.append("and lower(a.nombre) like '%"+term+"%' ");
+			query.append("and lower(a.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		
 		return (Long)em.createQuery(query.toString())
