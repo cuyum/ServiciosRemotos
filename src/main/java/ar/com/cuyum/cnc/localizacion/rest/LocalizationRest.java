@@ -230,7 +230,8 @@ public class LocalizationRest {
 			@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {
 		RestResponse response = new RestResponse();
 		List<Acceso> lstAccesos = new ArrayList<Acceso>();
-		List<Acceso> results = new ArrayList<Acceso>();
+		List<ListObject> results = new ArrayList<ListObject>();
+		
 		try {
 			if(fkey==null || fkey.isEmpty()){
 				response.setSuccess(false);
@@ -239,13 +240,21 @@ public class LocalizationRest {
 				return response;
 			}
 			
-			lstAccesos = accesosService.buscarAccesosPorIdServicio(fkey);
+			lstAccesos = accesosService.buscarAccesosPorIdServicio(fkey, term);
 			response.setSuccess(true);
+			if (null != lstAccesos)
+				response.setTotal(lstAccesos.size());
+			else response.setTotal(0);
+			if(lstAccesos!=null && lstAccesos.size()>0){
+				for (Acceso acceso : lstAccesos) {
+					results.add(new ListObject(acceso.getId().toString(),acceso.getNombre()));
+				}
+			}
 		} catch (Exception e) {
 			response.setSuccess(false);
 			log.error(e.getMessage());
 		}
-		response.setResult(lstAccesos);
+		response.setResult(results);
 		return response;
 	}
 	

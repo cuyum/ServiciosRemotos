@@ -25,7 +25,7 @@ public class PrestadoresService {
 		query.append("select p from Prestador p ");
 		query.append("where p.estado = :estado ");
 		if(term!=null){
-			query.append("and p.nombre like'%"+term+"%' ");
+			query.append("and lower(p.nombre) like'"+term+"%' ");
 		}
 		query.append("order by p.nombre");
 		List<Prestador> lstPrestadores = em.createQuery(query.toString())
@@ -44,7 +44,7 @@ public class PrestadoresService {
 		query.append("select p from Prestador p ");
 		query.append("where p.estado = :estado ");
 		if(term!=null){
-			query.append("and lower(p.nombre) like'%"+term+"%' ");
+			query.append("and lower(p.nombre) like'"+term.toLowerCase()+"%'");
 		}
 		query.append("order by p.nombre");
 		
@@ -62,7 +62,7 @@ public class PrestadoresService {
 		query.append("select count(*) from Prestador p ");
 		query.append("where p.estado = :estado ");
 		if(term!=null){
-			query.append("and lower(p.nombre) like '%"+term+"%' ");
+			query.append("and lower(p.nombre) like '"+term.toLowerCase()+"%' ");
 		}
 		
 		return (Long)em.createQuery(query.toString())
