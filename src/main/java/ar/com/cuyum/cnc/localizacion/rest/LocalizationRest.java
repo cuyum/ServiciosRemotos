@@ -69,12 +69,12 @@ public class LocalizationRest {
 					results.add(new ListObject(prov.getId().toString(),prov.getNombre()));
 				}
 			}
-			response.setResult(results);
 			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setSuccess(false);
 			log.error(e.getMessage());
 		}		
+		response.setResult(results);
 		return response;
 	}
 	
@@ -107,12 +107,12 @@ public class LocalizationRest {
 					results.add(new ListObject(partido.getId().toString(),partido.getNombre()));
 				}
 			}
-			response.setResult(results);
 			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setSuccess(false);
 			log.error(e.getMessage());
 		}
+		response.setResult(results);
 		return response;
 	}
 	
@@ -145,12 +145,12 @@ public class LocalizationRest {
 					results.add(new ListObject(localidad.getId().toString(),localidad.getNombre()));
 				}
 			}
-			response.setResult(results);
 			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setSuccess(false);
 			log.error(e.getMessage());
 		}
+		response.setResult(results);
 		return response;
 	}
 	
@@ -183,13 +183,13 @@ public class LocalizationRest {
 					results.add(new ListObject(area.getId().toString(),area.getNombre()));
 				}
 			}
-			response.setResult(results);
 			response.setSuccess(true);
 			
 		} catch (Exception e) {
 			response.setSuccess(false);
 			log.error(e.getMessage());
 		}	
+		response.setResult(results);
 		return response;
 	}
 	
@@ -214,12 +214,12 @@ public class LocalizationRest {
 					results.add(new ListObject(prestador.getId(),prestador.getNombre()));
 				}
 			}
-			response.setResult(results);
 			response.setSuccess(true);
 		} catch (Exception e) {
 			response.setSuccess(false);
 			log.error(e.getMessage());
 		}		
+		response.setResult(results);
 		return response;
 	}
 	
