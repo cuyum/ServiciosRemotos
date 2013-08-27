@@ -86,7 +86,8 @@ Los scripts de carga inicial están ubicados en localizacion/sql/ y son 3:
 
 localizacion/sql/estructuras.sql (crea las tablas)
 localizacion/sql/geograficas.sql (inserción de datos de provincias, partidos, localidades y áreas locales)
-localizacion/sql/otrasTablas.sql (inserción de datos de proveedores ...)
+localizacion/sql/proveedores.sql (inserción de datos de proveedores)
+localizacion/sql/otrasTablas.sql 
 
 
 4.Despliegue
