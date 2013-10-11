@@ -9,6 +9,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 
 import ar.com.cuyum.cnc.localizacion.model.Acceso;
+import ar.com.cuyum.cnc.localizacion.model.Prestador;
 import ar.com.cuyum.cnc.localizacion.model.Servicio;
 
 @Stateless
@@ -17,6 +18,34 @@ public class AccesosService {
 	
 	@Inject
 	private EntityManager em;
+	
+	@SuppressWarnings("unchecked")
+	public List<Servicio> buscarServicios(String term, int limit, int page){
+		if(page<=0 || limit<1) return null;
+		int first = (page-1)*limit;
+		
+		StringBuilder query = new StringBuilder();
+		query.append("select s from Servicio s ");
+		if(term!=null){
+			query.append("and lower(s.nombre) like'"+term+"%' ");
+		}
+		query.append("order by s.nombre");
+		List<Servicio> lstPrestadores = em.createQuery(query.toString())
+				.getResultList();
+		
+		return lstPrestadores;
+	}
+	
+	public Long contarServicios(String term){
+		StringBuilder query = new StringBuilder();
+		query.append("select count(*) from Servicio s ");
+		if(term!=null){
+			query.append("where lower(s.nombre) like '"+term.toLowerCase()+"%' ");
+		}
+		
+		return (Long)em.createQuery(query.toString())
+				.getSingleResult();
+	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Acceso> buscarAccesosPorIdServicio(String idServicio,String term){

@@ -23,6 +23,7 @@ import ar.com.cuyum.cnc.localizacion.model.Localidad;
 import ar.com.cuyum.cnc.localizacion.model.Partido;
 import ar.com.cuyum.cnc.localizacion.model.Prestador;
 import ar.com.cuyum.cnc.localizacion.model.Provincia;
+import ar.com.cuyum.cnc.localizacion.model.Servicio;
 import ar.com.cuyum.cnc.localizacion.service.AccesosService;
 import ar.com.cuyum.cnc.localizacion.service.LocalizacionService;
 import ar.com.cuyum.cnc.localizacion.service.PrestadoresService;
@@ -212,6 +213,37 @@ public class LocalizationRest {
 			if(lstPrestadores!=null && lstPrestadores.size()>0){
 				for (Prestador prestador : lstPrestadores) {
 					results.add(new ListObject(prestador.getId(),prestador.getNombre()));
+				}
+			}
+			response.setSuccess(true);
+		} catch (Exception e) {
+			response.setSuccess(false);
+			log.error(e.getMessage());
+		}		
+		response.setResult(results);
+		return response;
+	}
+	
+	@POST
+	@Path("/servicios")
+	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")	
+	public RestResponse servicios(@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {
+		/*devolver un json valido como string*/
+		RestResponse response = new RestResponse();
+		List<Servicio> listaSrv = new ArrayList<Servicio>();
+		List<ListObject> results = new ArrayList<ListObject>();
+		
+		try {
+			if(limit==null){
+				listaSrv = accesosService.buscarServicios(term,999999,1);		
+			}else{
+				page=page==null?1:page;
+				listaSrv = accesosService.buscarServicios(term,limit,page);	
+				response.setTotal(accesosService.contarServicios(term));
+			}
+			if(listaSrv!=null && listaSrv.size()>0){
+				for (Servicio srv : listaSrv) {
+					results.add(new ListObject(srv.getId().toString(),srv.getNombre()));
 				}
 			}
 			response.setSuccess(true);
