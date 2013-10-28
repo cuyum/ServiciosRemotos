@@ -27,7 +27,7 @@ public class AccesosService {
 		StringBuilder query = new StringBuilder();
 		query.append("select s from Servicio s ");
 		if(term!=null){
-			query.append("and lower(s.nombre) like'"+term+"%' ");
+			query.append("and lower(s.nombre) like '"+term+"%' ");
 		}
 		query.append("order by s.nombre");
 		List<Servicio> lstPrestadores = em.createQuery(query.toString())
