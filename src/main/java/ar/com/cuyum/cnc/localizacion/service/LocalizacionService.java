@@ -8,6 +8,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 
 import ar.com.cuyum.cnc.localizacion.model.Area;
+import ar.com.cuyum.cnc.localizacion.model.Area2;
 import ar.com.cuyum.cnc.localizacion.model.Localidad;
 import ar.com.cuyum.cnc.localizacion.model.Partido;
 import ar.com.cuyum.cnc.localizacion.model.Provincia;
@@ -224,6 +225,59 @@ public class LocalizacionService {
 	public Long contarAreas(Long idLocalidad, String term){
 		StringBuilder query = new StringBuilder();
 		query.append("select count(*) from Area a ");
+		query.append("where a.idLocalidad=:localidad ");
+		if(term!=null){
+			query.append("and lower(a.nombre) like '"+term.toLowerCase()+"%' ");
+		}
+		
+		return (Long)em.createQuery(query.toString())
+				.setParameter("localidad", idLocalidad)
+				.getSingleResult();
+	}
+	
+	/*======= AREAS2 =======*/
+	
+	@SuppressWarnings("unchecked")
+	public List<Area2> buscarAreas2(Long idLocalidad, String term){
+		StringBuilder query = new StringBuilder();
+		query.append("select a from Area2 a ");
+		query.append("where a.idLocalidad= :localidad ");
+		if(term!=null){
+			query.append("and lower(a.nombre) like '"+term.toLowerCase()+"%' ");
+		}
+		query.append("order by a.nombre");
+		
+		List<Area2> prov = em.createQuery(query.toString())
+				.setParameter("localidad", idLocalidad)
+				.getResultList();
+		return prov;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Area2> buscarAreas2(Long idLocalidad, String term, int limit, int page){
+		
+		if(page<=0 || limit<1) return null;
+		int first = (page-1)*limit;
+		
+		StringBuilder query = new StringBuilder();
+		query.append("select a from Area2 a ");
+		query.append("where a.idLocalidad= :localidad ");
+		if(term!=null){
+			query.append("and lower(a.nombre) like '"+term.toLowerCase()+"%' ");
+		}
+		query.append("order by a.nombre");
+		
+		List<Area2> prov = em.createQuery(query.toString())
+				.setParameter("localidad", idLocalidad)
+				.setFirstResult(first)
+				.setMaxResults(limit)
+				.getResultList();
+		return prov;
+	}
+	
+	public Long contarAreas2(Long idLocalidad, String term){
+		StringBuilder query = new StringBuilder();
+		query.append("select count(*) from Area2 a ");
 		query.append("where a.idLocalidad=:localidad ");
 		if(term!=null){
 			query.append("and lower(a.nombre) like '"+term.toLowerCase()+"%' ");
