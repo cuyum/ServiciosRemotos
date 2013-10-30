@@ -19,7 +19,7 @@ INSERT INTO periodos(id, nombre, tipo) VALUES (14, 'Febrero','trimestral_1');
 INSERT INTO periodos(id, nombre, tipo) VALUES (15, 'Marzo','trimestral_1');
 INSERT INTO periodos(id, nombre, tipo) VALUES (16, 'Abril','trimestral_2');
 INSERT INTO periodos(id, nombre, tipo) VALUES (17, 'Mayo','trimestral_2');
-INSERT INTO periodos(id, nombre, tipo) VALUES (18, 'Junio','trimestral_2')
+INSERT INTO periodos(id, nombre, tipo) VALUES (18, 'Junio','trimestral_2');
 INSERT INTO periodos(id, nombre, tipo) VALUES (19, 'Julio','trimestral_3');
 INSERT INTO periodos(id, nombre, tipo) VALUES (20, 'Agosto','trimestral_3');
 INSERT INTO periodos(id, nombre, tipo) VALUES (21, 'Septiembre','trimestral_3');
