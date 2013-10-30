@@ -1,1 +1,0 @@
-INSERT INTO parametros(id, nombre, valor, version) VALUES (1, 'minutos_hora','60', 0);

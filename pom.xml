@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ar.gov.cnc</groupId>
-    <artifactId>servicios_remotos</artifactId>
+    <artifactId>servicios</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Servicios Remotos</name>
