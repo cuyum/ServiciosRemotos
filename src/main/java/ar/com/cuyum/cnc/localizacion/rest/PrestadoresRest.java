@@ -24,7 +24,7 @@ import ar.com.cuyum.cnc.localizacion.vo.ListObject;
  * @author Jorge Morando
  *
  */
-@Path("/prestadores")
+
 @RequestScoped
 public class PrestadoresRest {
 
@@ -35,7 +35,8 @@ public class PrestadoresRest {
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")
-	public RestResponse index(
+	@Path("/prestadores")
+	public RestResponse prestadores(
 			@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {		
 		RestResponse response = new RestResponse();
 		List<Prestador> lstPrestadores;
@@ -61,5 +62,54 @@ public class PrestadoresRest {
 		response.setResult(results);
 		return response;
 	}	
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")
+	@Path("/prestadoresOtros")
+	public RestResponse prestadoresOtros(
+			@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {		
+		RestResponse response = new RestResponse();
+		List<Prestador> lstPrestadores;
+		List<ListObject> results = new ArrayList<ListObject>();
+		try {
+			if(limit==null){
+				lstPrestadores = prestadoresService.buscarPrestadores(term);
+				if(term==null || term.equalsIgnoreCase("o") || term.equalsIgnoreCase("ot") 
+						|| term.equalsIgnoreCase("otr") || term.equalsIgnoreCase("otro") || term.equalsIgnoreCase("otros")){
+					Prestador p = new Prestador();
+					p.setId("999999");
+					p.setIdProveedor(999999L);
+					p.setEstado(1);
+					p.setNombre("OTROS");
+					lstPrestadores.add(p);
+				}
+			}else{
+				page=page==null?1:page;
+				lstPrestadores = prestadoresService.buscarPrestadores(term,limit,page);	
+				if(term==null || term.equalsIgnoreCase("o") || term.equalsIgnoreCase("ot") 
+						|| term.equalsIgnoreCase("otr") || term.equalsIgnoreCase("otro") || term.equalsIgnoreCase("otros")){
+					Prestador p = new Prestador();
+					p.setId("999999");
+					p.setIdProveedor(999999L);
+					p.setEstado(1);
+					p.setNombre("OTROS");
+					lstPrestadores.add(p);
+				}
+				long count = prestadoresService.contarPrestadores(term);
+				response.setTotal(term==null?count+1:count);
+			}
+			if(lstPrestadores!=null && lstPrestadores.size()>0){
+				for (Prestador prestador : lstPrestadores) {
+					results.add(new ListObject(prestador.getId(),prestador.getNombre()));
+				}
+			}
+			response.setSuccess(true);
+		} catch (Exception e) {
+			response.setSuccess(false);
+			log.error(e.getMessage());
+		}		
+		response.setResult(results);
+		return response;
+	}
 	
 }
