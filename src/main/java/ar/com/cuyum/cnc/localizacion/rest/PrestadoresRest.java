@@ -26,6 +26,7 @@ import ar.com.cuyum.cnc.localizacion.vo.ListObject;
  */
 
 @RequestScoped
+@Path("/prestadores")
 public class PrestadoresRest {
 
 	private Logger log = Logger.getLogger(PrestadoresRest.class);
@@ -35,7 +36,6 @@ public class PrestadoresRest {
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")
-	@Path("/prestadores")
 	public RestResponse prestadores(
 			@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {		
 		RestResponse response = new RestResponse();
@@ -65,7 +65,7 @@ public class PrestadoresRest {
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")
-	@Path("/prestadoresOtros")
+	@Path("/otros")
 	public RestResponse prestadoresOtros(
 			@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {		
 		RestResponse response = new RestResponse();
