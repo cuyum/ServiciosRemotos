@@ -63,26 +63,31 @@ la siguiente entrada, especificando usuario y password correspondiente:
 
 	...
 	<datasources>
-	...	
-		<datasource jta="true" jndi-name="java:jboss/datasources/CncLocalizacionDS" pool-name="CncLocalizacionDS" enabled="true" use-java-context="true" use-ccm="true">
+	...
+                <datasource jta="true" jndi-name="java:jboss/datasources/CncLocalizacionDS" pool-name="CncLocalizacionDS" enabled="true" use-java-context="true" use-ccm="true">
                     <connection-url>jdbc:postgresql://localhost:5432/servicios</connection-url>
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>postgresql</driver>
                     <security>
-                        <user-name>${username}</user-name>
-                        <password>${password}</password>
+                        <user-name>postgres</user-name>
+                        <password>cuyum123</password>
                     </security>
-                </datasource> 
-        ...              
-        <drivers>    
-        ...                
-            <driver name="postgresql" module="org.postgresql">
-                <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
-            </driver>
-        ...    
-        </drivers>
-	...
-	</datasources>
+                </datasource>
+        ...        
+                <drivers>
+        ...
+                    <driver name="h2" module="com.h2database.h2">
+                        <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="mysql" module="com.mysql">
+                        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="postgresql" module="org.postgresql">
+                        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+                    </driver>
+                </drivers>
+        ...        
+        </datasources>
 	...	 
 	
 3) Ejecutar los scripts de estructura y datos en la BD "servicios" creada
