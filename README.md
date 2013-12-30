@@ -85,7 +85,7 @@ la siguiente entrada, especificando usuario y password correspondiente:
 	</datasources>
 	...	 
 	
-3) Ejecutar los scripts de estructura y datos en la BD cnc creada
+3) Ejecutar los scripts de estructura y datos en la BD "servicios" creada
 
 Los scripts de carga inicial están ubicados en ServiciosRemotos/sql/ y son 3:
 
