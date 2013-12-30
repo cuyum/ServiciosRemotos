@@ -54,7 +54,7 @@ Agregar al archivo <jboss-as-7.1.0.Final>\standalone\configuration\standalone.xm
 	
 2.3.2) Crear base de datos BD
 
-Crear base de datos BD "cnc" en postgres
+Crear base de datos BD "servicios" en postgres
 
 A continuacion se especifica el datasource que debe ser usado, en este caso para una BD Postgres.
 
