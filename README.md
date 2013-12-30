@@ -122,7 +122,7 @@ ServiciosRemotos/sql/otrasTablas.sql (inserción de datos de accesos y servicios
 * Para obtener la lista de prestadores.
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/servicios/rest/prestadores?page={LONG}&limit={INTEGER}[&term={STRING}]
+http://<localhost:8080>/localizacion/rest/prestadores?page={LONG}&limit={INTEGER}[&term={STRING}]
 
 como respuesta se deberá obtener como mínimo un JSON con la siguiente estructura:
 {"total":_number_,"success":_boolean_,"result":[{"id":_num_,"text":_string_}]}
@@ -131,7 +131,7 @@ como respuesta se deberá obtener como mínimo un JSON con la siguiente estructu
 * Para obtener la lista de provincias.
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/servicios/rest/localizaciones/provincias
+http://<localhost:8080>/localizacion/rest/localizaciones/provincias
 
 obteniendo como RESPONSE:
 {"success":true,"result":[{"id":2,"nombre":"BUENOS AIRES"},...,...,{"id":6,"nombre":"TUCUMAN"}],"msg":null}
@@ -140,21 +140,26 @@ obteniendo como RESPONSE:
 * Para obtener la lista de partidos de una provincia
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/servicios/rest/localizaciones/partidos
+http://<localhost:8080>/localizacion/rest/localizaciones/partidos
 
 con FormParam nombre fkey y valor el id de la provincia
 
 * Para obtener la lista de localidades de un partido
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/servicios/rest/localizaciones/localidades
+http://<localhost:8080>/localizacion/rest/localizaciones/localidades
 
 con FormParam nombre fkey y valor el id del partido
 
 * Para obtener la lista de áreas locales de una localidad
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/servicios/rest/localizaciones/areas
+http://<localhost:8080>/localizacion/rest/localizaciones/areas
 
 con FormParam nombre fkey y valor el id de la localidad
 
+Hacer un request del tipo POST a:
+http://<localhost:8080>/localizacion/rest/localizaciones/servicios
+
+obteniendo como RESPONSE:
+{"success":true,"result":[{"id":"610","nombre":"610"},...,...,{"id":"OTROS","nombre":"OTROS"}],"msg":null}
