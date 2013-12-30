@@ -64,7 +64,7 @@ la siguiente entrada, especificando usuario y password correspondiente:
 	...
 	<datasources>
 	...	
-		<datasource jta="true" jndi-name="java:jboss/datasources/serviciosDS" pool-name="serviciosDS" enabled="true" use-java-context="true" use-ccm="true">
+		<datasource jta="true" jndi-name="java:jboss/datasources/CncLocalizacionDS" pool-name="CncLocalizacionDS" enabled="true" use-java-context="true" use-ccm="true">
                     <connection-url>jdbc:postgresql://localhost:5432/servicios</connection-url>
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>postgresql</driver>
@@ -106,8 +106,8 @@ ServiciosRemotos/sql/otrasTablas.sql (inserción de datos de accesos y servicios
 	
 2) Ubicados sobre el proyecto maven tipeamos
 	$>mvn clean package
-	Esto genera un archivo war en "servicios\targeto\servicios.war"
-3) Deployar el archivo "servicios.war" generado, para ello
+	Esto genera un archivo war en "ServiciosRemotos\target\localizacion.war"
+3) Deployar el archivo "localizacion.war" generado, para ello
    en JBoss 7.1.0 copiar el archivo al directorio <jboss-as-7.1.0.Final>\standalone\deployments 
 4) Iniciar el server (standalone.bat en windows o standalone.sh unix)
 
