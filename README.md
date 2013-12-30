@@ -92,7 +92,7 @@ Los scripts de carga inicial están ubicados en ServiciosRemotos/sql/ y son 3:
 ServiciosRemotos/sql/estructuras.sql (crea las tablas)
 ServiciosRemotos/sql/geograficas.sql (inserción de datos de provincias, partidos, localidades y áreas locales)
 ServiciosRemotos/sql/proveedores.sql (inserción de datos de proveedores)
-ServiciosRemotos/sql/otrasTablas.sql 
+ServiciosRemotos/sql/otrasTablas.sql (inserción de datos de accesos y servicios)
 
 
 4.Despliegue
