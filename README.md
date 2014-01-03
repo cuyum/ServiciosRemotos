@@ -107,7 +107,7 @@ ServiciosRemotos/sql/otrasTablas.sql (inserción de datos de accesos y servicios
 
 1) Este proyecto usa git. Para bajarse el proyecto, hacer 
 
-	$>git clone git@cluster.softwarepublico.gob.ar:cnc2220.git
+	$>git clone git@cluster.softwarepublico.gob.ar:cnc_ict.git
 	
 2) Ubicados sobre el proyecto maven tipeamos
 	$>mvn clean package
