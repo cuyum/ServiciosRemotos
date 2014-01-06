@@ -68,6 +68,17 @@ CREATE TABLE areas (
 
 
 --
+-- TOC entry 175 (class 1259 OID 138385)
+-- Name: areas; Type: TABLE; Schema: public; Owner: -
+--
+DROP TABLE IF EXISTS areas2;
+CREATE TABLE areas2 (
+    id_localidad bigint NOT NULL,
+    id_area_local bigint NOT NULL,
+    descr character varying
+);
+
+--
 -- TOC entry 174 (class 1259 OID 138351)
 -- Name: localidades; Type: TABLE; Schema: public; Owner: -
 --

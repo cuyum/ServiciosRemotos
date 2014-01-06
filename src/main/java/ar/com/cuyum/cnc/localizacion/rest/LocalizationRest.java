@@ -17,13 +17,11 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
 
-import ar.com.cuyum.cnc.localizacion.model.Acceso;
 import ar.com.cuyum.cnc.localizacion.model.Area;
+import ar.com.cuyum.cnc.localizacion.model.Area2;
 import ar.com.cuyum.cnc.localizacion.model.Localidad;
 import ar.com.cuyum.cnc.localizacion.model.Partido;
-import ar.com.cuyum.cnc.localizacion.model.Prestador;
 import ar.com.cuyum.cnc.localizacion.model.Provincia;
-import ar.com.cuyum.cnc.localizacion.model.Servicio;
 import ar.com.cuyum.cnc.localizacion.service.AccesosService;
 import ar.com.cuyum.cnc.localizacion.service.LocalizacionService;
 import ar.com.cuyum.cnc.localizacion.service.PrestadoresService;
@@ -195,75 +193,15 @@ public class LocalizationRest {
 	}
 	
 	@POST
-	@Path("/prestadores")
+	@Path("/areas2")
 	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")
-	public RestResponse prestadores(
-			@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {		
-		RestResponse response = new RestResponse();
-		List<Prestador> lstPrestadores;
-		List<ListObject> results = new ArrayList<ListObject>();
-		try {
-			if(limit==null){
-				lstPrestadores = prestadoresService.buscarPrestadores(term);		
-			}else{
-				page=page==null?1:page;
-				lstPrestadores = prestadoresService.buscarPrestadores(term,limit,page);	
-				response.setTotal(prestadoresService.contarPrestadores(term));
-			}
-			if(lstPrestadores!=null && lstPrestadores.size()>0){
-				for (Prestador prestador : lstPrestadores) {
-					results.add(new ListObject(prestador.getId(),prestador.getNombre()));
-				}
-			}
-			response.setSuccess(true);
-		} catch (Exception e) {
-			response.setSuccess(false);
-			log.error(e.getMessage());
-		}		
-		response.setResult(results);
-		return response;
-	}
-	
-	@POST
-	@Path("/servicios")
-	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")	
-	public RestResponse servicios(@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {
+	public RestResponse areas2(@FormParam("fkey") String fkey,
+			@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {
 		/*devolver un json valido como string*/
 		RestResponse response = new RestResponse();
-		List<Servicio> listaSrv = new ArrayList<Servicio>();
+		List<Area2> listaAreas = new ArrayList<Area2>();
 		List<ListObject> results = new ArrayList<ListObject>();
-		
-		try {
-			if(limit==null){
-				listaSrv = accesosService.buscarServicios(term,999999,1);		
-			}else{
-				page=page==null?1:page;
-				listaSrv = accesosService.buscarServicios(term,limit,page);	
-				response.setTotal(accesosService.contarServicios(term));
-			}
-			if(listaSrv!=null && listaSrv.size()>0){
-				for (Servicio srv : listaSrv) {
-					results.add(new ListObject(srv.getId().toString(),srv.getNombre()));
-				}
-			}
-			response.setSuccess(true);
-		} catch (Exception e) {
-			response.setSuccess(false);
-			log.error(e.getMessage());
-		}		
-		response.setResult(results);
-		return response;
-	}
-	
-	@POST
-	@Path("/accesos")
-	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")	
-	public RestResponse accesos(@FormParam("fkey") String fkey,
-			@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {
-		RestResponse response = new RestResponse();
-		List<Acceso> lstAccesos = new ArrayList<Acceso>();
-		List<ListObject> results = new ArrayList<ListObject>();
-		
+
 		try {
 			if(fkey==null || fkey.isEmpty()){
 				response.setSuccess(false);
@@ -271,21 +209,24 @@ public class LocalizationRest {
 				response.setMsg("fkey invalid");
 				return response;
 			}
-			
-			lstAccesos = accesosService.buscarAccesosPorIdServicio(fkey, term);
-			response.setSuccess(true);
-			if (null != lstAccesos)
-				response.setTotal(lstAccesos.size());
-			else response.setTotal(0);
-			if(lstAccesos!=null && lstAccesos.size()>0){
-				for (Acceso acceso : lstAccesos) {
-					results.add(new ListObject(acceso.getId().toString(),acceso.getNombre()));
+			if(limit==null){
+				listaAreas = localizacionService.buscarAreas2(Long.valueOf(fkey),term);		
+			}else{
+				page=page==null?1:page;
+				listaAreas = localizacionService.buscarAreas2(Long.valueOf(fkey),term,limit,page);	
+				response.setTotal(localizacionService.contarAreas2(Long.valueOf(fkey),term));
+			}
+			if(listaAreas!=null && listaAreas.size()>0){
+				for (Area2 area : listaAreas) {
+					results.add(new ListObject(area.getId().toString(),area.getNombre()));
 				}
 			}
+			response.setSuccess(true);
+			
 		} catch (Exception e) {
 			response.setSuccess(false);
 			log.error(e.getMessage());
-		}
+		}	
 		response.setResult(results);
 		return response;
 	}
