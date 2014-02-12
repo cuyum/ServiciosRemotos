@@ -64,15 +64,15 @@ la siguiente entrada, especificando usuario y password correspondiente:
 	...
 	<datasources>
 	...
-                <datasource jta="true" jndi-name="java:jboss/datasources/CncLocalizacionDS" pool-name="CncLocalizacionDS" enabled="true" use-java-context="true" use-ccm="true">
-                    <connection-url>jdbc:postgresql://localhost:5432/servicios</connection-url>
-                    <driver-class>org.postgresql.Driver</driver-class>
-                    <driver>postgresql</driver>
-                    <security>
-                        <user-name>postgres</user-name>
-                        <password>cuyum123</password>
-                    </security>
-                </datasource>
+                <datasource jta="true" jndi-name="java:jboss/datasources/ServiciosRemotosDS" pool-name="ServiciosRemotosDS" enabled="true" use-java-context="true" use-ccm="true">
+					<connection-url>jdbc:postgresql://localhost:5432/servicios</connection-url>
+					<driver-class>org.postgresql.Driver</driver-class>
+					<driver>postgresql</driver>
+					<security>
+						<user-name>postgres</user-name>
+						<password>cuyum123</password>
+					</security>
+				</datasource>
         ...        
                 <drivers>
         ...
@@ -111,8 +111,8 @@ ServiciosRemotos/sql/otrasTablas.sql (inserción de datos de accesos y servicios
 	
 2) Ubicados sobre el proyecto maven tipeamos
 	$>mvn clean package
-	Esto genera un archivo war en "ServiciosRemotos\target\localizacion.war"
-3) Deployar el archivo "localizacion.war" generado, para ello
+	Esto genera un archivo war en "ServiciosRemotos\target\servicios.war"
+3) Deployar el archivo "servicios.war" generado, para ello
    en JBoss 7.1.0 copiar el archivo al directorio <jboss-as-7.1.0.Final>\standalone\deployments 
 4) Iniciar el server (standalone.bat en windows o standalone.sh unix)
 
@@ -122,7 +122,7 @@ ServiciosRemotos/sql/otrasTablas.sql (inserción de datos de accesos y servicios
 * Para obtener la lista de prestadores.
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/localizacion/rest/prestadores?page={LONG}&limit={INTEGER}[&term={STRING}]
+http://<localhost:8080>/servicios/rest/prestadores?page={LONG}&limit={INTEGER}[&term={STRING}]
 
 como respuesta se deberá obtener como mínimo un JSON con la siguiente estructura:
 {"total":_number_,"success":_boolean_,"result":[{"id":_num_,"text":_string_}]}
@@ -131,7 +131,7 @@ como respuesta se deberá obtener como mínimo un JSON con la siguiente estructu
 * Para obtener la lista de provincias.
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/localizacion/rest/localizaciones/provincias
+http://<localhost:8080>/servicios/rest/localizaciones/provincias
 
 obteniendo como RESPONSE:
 {"success":true,"result":[{"id":2,"nombre":"BUENOS AIRES"},...,...,{"id":6,"nombre":"TUCUMAN"}],"msg":null}
@@ -140,26 +140,26 @@ obteniendo como RESPONSE:
 * Para obtener la lista de partidos de una provincia
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/localizacion/rest/localizaciones/partidos
+http://<localhost:8080>/servicios/rest/localizaciones/partidos
 
 con FormParam nombre fkey y valor el id de la provincia
 
 * Para obtener la lista de localidades de un partido
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/localizacion/rest/localizaciones/localidades
+http://<localhost:8080>/servicios/rest/localizaciones/localidades
 
 con FormParam nombre fkey y valor el id del partido
 
 * Para obtener la lista de áreas locales de una localidad
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/localizacion/rest/localizaciones/areas
+http://<localhost:8080>/servicios/rest/localizaciones/areas
 
 con FormParam nombre fkey y valor el id de la localidad
 
 Hacer un request del tipo POST a:
-http://<localhost:8080>/localizacion/rest/localizaciones/servicios
+http://<localhost:8080>/servicios/rest/localizaciones/servicios
 
 obteniendo como RESPONSE:
 {"success":true,"result":[{"id":"610","nombre":"610"},...,...,{"id":"OTROS","nombre":"OTROS"}],"msg":null}
