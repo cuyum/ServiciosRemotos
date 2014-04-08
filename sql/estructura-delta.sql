@@ -78,3 +78,4 @@ ALTER TABLE public.periodos_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE periodos_id_seq OWNED BY periodos.id;
 
+

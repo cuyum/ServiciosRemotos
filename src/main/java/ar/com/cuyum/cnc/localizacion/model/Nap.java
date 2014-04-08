@@ -8,19 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="NAPS")
-public class NAP implements Serializable {
+@Table(name="naps")
+public class Nap implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="idNAP")
+	@Column(name="idnap")
 	private String id;
 		
-	@Column(name="NAP")
+	@Column(name="nap")
 	private String nombre;
 	
-	public NAP(){
+	public Nap(){
 		
 	}
 	

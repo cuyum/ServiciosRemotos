@@ -31,3 +31,16 @@ Insert into accesos_servicio (idAcceso, idServicio) values ('BPL','BANDA_ANCHA')
 Insert into accesos_servicio (idAcceso, idServicio) values ('WIMAX','BANDA_ANCHA');
 Insert into accesos_servicio (idAcceso, idServicio) values ('FIBRA_OPTICA','BANDA_ANCHA');
 Insert into accesos_servicio (idAcceso, idServicio) values ('OTROS','OTROS');
+
+Insert into naps (idnap, nap) values ('NAP_BAHÍA_BLANCA','NAP_BAHÍA_BLANCA');
+Insert into naps (idnap, nap) values ('NAP_BUENOS_AIRES','NAP_BUENOS_AIRES');
+Insert into naps (idnap, nap) values ('NAP_CÓRDOBA','NAP_CÓRDOBA');
+Insert into naps (idnap, nap) values ('NAP_DE_LA_COSTA','NAP_DE_LA_COSTA');
+Insert into naps (idnap, nap) values ('NAP_LA_PLATA','NAP_LA_PLATA');
+Insert into naps (idnap, nap) values ('NAP_MAR_DEL_PLATA','NAP_MAR_DEL_PLATA');
+Insert into naps (idnap, nap) values ('NAP_MENDOZA','NAP_MENDOZA');
+Insert into naps (idnap, nap) values ('NAP_NEUQUÉN','NAP_NEUQUÉN');
+Insert into naps (idnap, nap) values ('NAP_ROSARIO','NAP_ROSARIO');
+Insert into naps (idnap, nap) values ('NAP_SANTA_FÉ','NAP_SANTA_FÉ');
+
+

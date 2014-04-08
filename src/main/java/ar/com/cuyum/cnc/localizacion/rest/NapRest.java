@@ -18,10 +18,10 @@ import javax.ws.rs.core.MediaType;
 import org.apache.log4j.Logger;
 
 import ar.com.cuyum.cnc.localizacion.model.Acceso;
-import ar.com.cuyum.cnc.localizacion.model.NAP;
+import ar.com.cuyum.cnc.localizacion.model.Nap;
 import ar.com.cuyum.cnc.localizacion.model.Prestador;
 import ar.com.cuyum.cnc.localizacion.service.AccesosService;
-import ar.com.cuyum.cnc.localizacion.service.NAPService;
+import ar.com.cuyum.cnc.localizacion.service.NapService;
 import ar.com.cuyum.cnc.localizacion.service.PrestadoresService;
 import ar.com.cuyum.cnc.localizacion.vo.ListObject;
 
@@ -31,20 +31,20 @@ import ar.com.cuyum.cnc.localizacion.vo.ListObject;
  */
 @Path("/naps")
 @RequestScoped
-public class NAPRest {
+public class NapRest {
 
-	private Logger log = Logger.getLogger(NAPRest.class);
+	private Logger log = Logger.getLogger(NapRest.class);
 
 
 	@Inject
-	NAPService napService;
+	NapService napService;
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")
 	public RestResponse naps(
 			@QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {		
 		RestResponse response = new RestResponse();
-		List<NAP> lstNaps;
+		List<Nap> lstNaps;
 		List<ListObject> results = new ArrayList<ListObject>();
 		try {
 			if(limit==null){
@@ -55,7 +55,7 @@ public class NAPRest {
 				response.setTotal(napService.contarNaps(term));
 			}
 			if(lstNaps!=null && lstNaps.size()>0){
-				for (NAP nap : lstNaps) {
+				for (Nap nap : lstNaps) {
 					results.add(new ListObject(nap.getId(),nap.getNombre()));
 				}
 			}
