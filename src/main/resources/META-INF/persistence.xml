@@ -16,6 +16,7 @@
       <class>ar.com.cuyum.cnc.localizacion.model.Acceso</class>
       <class>ar.com.cuyum.cnc.localizacion.model.Periodo</class>
       <class>ar.com.cuyum.cnc.localizacion.model.Nap</class>
+      
       <properties>
          <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />      
          <property name="hibernate.show_sql" value="false"/>
