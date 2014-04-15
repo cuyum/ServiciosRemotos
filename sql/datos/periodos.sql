@@ -1,4 +1,4 @@
--- parametros
+﻿-- parametros
 INSERT INTO parametros(id, nombre, valor, version) VALUES (1, 'minutos_hora','60', 0);
 
 -- periodos
@@ -30,3 +30,4 @@ INSERT INTO periodos(id, nombre, tipo) VALUES (25, 'Enero-Febrero-Marzo','trimes
 INSERT INTO periodos(id, nombre, tipo) VALUES (26, 'Abril-Mayo-Junio','trimestral');
 INSERT INTO periodos(id, nombre, tipo) VALUES (27, 'Julio-Agosto-Septiembre','trimestral');
 INSERT INTO periodos(id, nombre, tipo) VALUES (28, 'Octubre-Noviembre-Diciembre','trimestral');
+
