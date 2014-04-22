@@ -48,6 +48,7 @@ public class NapRest {
 		List<ListObject> results = new ArrayList<ListObject>();
 		try {
 			if(limit==null){
+				
 				lstNaps = napService.buscarNaps(term);		
 			}else{
 				page=page==null?1:page;

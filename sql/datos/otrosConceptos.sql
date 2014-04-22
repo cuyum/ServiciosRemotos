@@ -23,11 +23,11 @@ INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (16,'Audio','Audi
 INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (17,'Audio_Bidireccional','Audio Bidireccional',null,'tipo_informacion2');
 
 --areasred
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (18,'Área_de_Red_Interna_1','Área de Red Interna 1',null,'red_interna');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (19,'Área_de_Red_Interna_2','Área de Red Interna 2',null,'red_interna');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (20,'Área_de_Red_Interna_3','Área de Red Interna 3',null,'red_interna');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (21,'Área_de_Red_Interna_4','Área de Red Interna 4',null,'red_interna');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (22,'Área_de_Red_Interna_5','Área de Red Interna 5',null,'red_interna');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (18,'Area_de_Red_Interna_1','Area de Red Interna 1',null,'red_interna');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (19,'Area_de_Red_Interna_2','Area de Red Interna 2',null,'red_interna');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (20,'Area_de_Red_Interna_3','Area de Red Interna 3',null,'red_interna');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (21,'Area_de_Red_Interna_4','Area de Red Interna 4',null,'red_interna');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (22,'Area_de_Red_Interna_5','Area de Red Interna 5',null,'red_interna');
 
 --unidades
 INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (23,'mbps','Mbps',null,'unidad');
@@ -133,5 +133,5 @@ INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (94,'desde_30_has
 INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (95,'desde_50.','desde 50.',null,'abono');
 
 --destinos
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(96,'Prestadores','Prestadores',null,'destino');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(96,'Prestador','Prestador',null,'destino');
 INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(97,'NAP','NAP',null,'destino');
