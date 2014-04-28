@@ -72,11 +72,11 @@ INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (47,'PREPAGO','PR
 INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (48,'MIXTO','MIXTO',null,'modalidad2');
 
 --recargas
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (49,'Hasta_10_pesos.','Hasta 10 pesos.',null,'recargaTipo');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (50,'desde_10_hasta_20_pesos.','desde 10 hasta 20 pesos.',null,'recargaTipo');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (51,'desde_20_hasta_30_pesos.','desde 20 hasta 30 pesos.',null,'recargaTipo');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (52,'desde_30_hasta_50_pesos.','desde 30 hasta 50 pesos.',null,'recargaTipo');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (53,'desde_50.','desde 50.',null,'recargaTipo');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (49,'Hasta_10_pesos','Hasta 10 pesos.',null,'recargaTipo');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (50,'desde_10_hasta_20_pesos','desde 10 hasta 20 pesos.',null,'recargaTipo');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (51,'desde_20_hasta_30_pesos','desde 20 hasta 30 pesos.',null,'recargaTipo');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (52,'desde_30_hasta_50_pesos','desde 30 hasta 50 pesos.',null,'recargaTipo');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (53,'desde_50','desde 50.',null,'recargaTipo');
 
 --anios
 INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (54,'2010','2010',null,'anio');
@@ -126,12 +126,37 @@ INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (89,'20Mbps_30Mbp
 INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (90,'30Mbps','+ 30 Mbps',null,'velocidadBajada');
 
 --abonos
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (91,'Hasta_10_pesos.','Hasta 10 pesos.',null,'abono');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (92,'desde_10_hasta_20_pesos.','desde 10 hasta 20 pesos.',null,'abono');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (93,'desde_20_hasta_30_pesos.','desde 20 hasta 30 pesos.',null,'abono');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (94,'desde_30_hasta_50_pesos.','desde 30 hasta 50 pesos.',null,'abono');
-INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (95,'desde_50.','desde 50.',null,'abono');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (91,'Hasta_10_pesos','Hasta 10 pesos.',null,'abono');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (92,'desde_10_hasta_20_pesos','desde 10 hasta 20 pesos.',null,'abono');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (93,'desde_20_hasta_30_pesos','desde 20 hasta 30 pesos.',null,'abono');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (94,'desde_30_hasta_50_pesos','desde 30 hasta 50 pesos.',null,'abono');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES (95,'desde_50','desde 50.',null,'abono');
 
 --destinos
 INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(96,'Prestador','Prestador',null,'destino');
 INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(97,'NAP','NAP',null,'destino');
+
+--tarifasAcceso
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(98,'ADSL','ADSL',null,'tarifasAcceso');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(99,'BPL','BPL',null,'tarifasAcceso');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(100,'CABLEMODEN','CABLEMODEN',null,'tarifasAcceso');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(101,'CELULAR','CELULAR',null,'tarifasAcceso');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(102,'DIAL_UP','DIAL_UP',null,'tarifasAcceso');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(103,'FIBRA_OPTICA','FIBRA_OPTICA',null,'tarifasAcceso');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(104,'OTROS','OTROS',null,'tarifasAcceso');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(105,'SATELITAL','SATELITAL',null,'tarifasAcceso');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(106,'WIMAX','WIMAX',null,'tarifasAcceso');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(107,'WIRELESS','WIRELESS',null,'tarifasAcceso');
+
+--planesAcceso
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(108,'ADSL','ADSL',null,'planesAccesos');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(109,'BPL','BPL',null,'planesAccesos');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(110,'CABLEMODEN','CABLEMODEN',null,'planesAccesos');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(111,'CELULAR','CELULAR',null,'planesAccesos');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(112,'DIAL_UP','DIAL_UP',null,'planesAccesos');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(113,'FIBRA_OPTICA','FIBRA_OPTICA',null,'planesAccesos');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(114,'OTROS','OTROS',null,'planesAccesos');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(115,'SATELITAL','SATELITAL',null,'planesAccesos');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(116,'WIMAX','WIMAX',null,'planesAccesos');
+INSERT INTO conceptos (id,nombre, valor, idpadre, tipo) VALUES(117,'WIRELESS','WIRELESS',null,'planesAccesos');
+
