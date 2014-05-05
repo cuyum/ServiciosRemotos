@@ -28,7 +28,7 @@ public class ConceptoService {
 		StringBuilder query = new StringBuilder();
 		query.append("select n from Concepto n ");
 		if(tipo!=null){
-			query.append("where lower(n.tipo) like '"+tipo.toLowerCase());
+			query.append("where lower(n.tipo) like '"+tipo.toLowerCase()+"'");
 		}
 		query.append("order by n.valor");
 		
@@ -47,7 +47,7 @@ public class ConceptoService {
 		StringBuilder query = new StringBuilder();
 		query.append("select n from Concepto n ");
 		if(tipo!=null){
-			query.append("where lower(n.tipo) like '"+tipo.toLowerCase());
+			query.append("where lower(n.tipo) like '"+tipo.toLowerCase()+"'");
 		}
 		query.append("order by n.valor");
 		
@@ -63,7 +63,7 @@ public class ConceptoService {
 		StringBuilder query = new StringBuilder();
 		query.append("select count(*) from Concepto n ");
 		if(tipo!=null){
-			query.append("where lower(n.tipo) like '"+tipo.toLowerCase());
+			query.append("where lower(n.tipo) like '"+tipo.toLowerCase()+"'");
 		}
 		
 		return (Long)em.createQuery(query.toString())
