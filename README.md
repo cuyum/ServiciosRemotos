@@ -132,6 +132,7 @@ como respuesta se deberá obtener como mínimo un JSON con la siguiente estructu
 
 Hacer un request del tipo POST a:
 http://<localhost:8080>/servicios/rest/localizaciones/provincias
+usando form-data sin parámetros
 
 obteniendo como RESPONSE:
 {"success":true,"result":[{"id":2,"nombre":"BUENOS AIRES"},...,...,{"id":6,"nombre":"TUCUMAN"}],"msg":null}
@@ -141,14 +142,14 @@ obteniendo como RESPONSE:
 
 Hacer un request del tipo POST a:
 http://<localhost:8080>/servicios/rest/localizaciones/partidos
-
+usando x-www-form-urlencoded
 con FormParam nombre fkey y valor el id de la provincia
 
 * Para obtener la lista de localidades de un partido
 
 Hacer un request del tipo POST a:
 http://<localhost:8080>/servicios/rest/localizaciones/localidades
-
+usando x-www-form-urlencoded
 con FormParam nombre fkey y valor el id del partido
 
 * Para obtener la lista de áreas locales de una localidad
