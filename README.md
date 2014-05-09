@@ -142,6 +142,7 @@ obteniendo como RESPONSE:
 
 Hacer un request del tipo POST a:
 http://<localhost:8080>/servicios/rest/localizaciones/partidos
+
 usando x-www-form-urlencoded
 con FormParam nombre fkey y valor el id de la provincia
 
@@ -149,6 +150,7 @@ con FormParam nombre fkey y valor el id de la provincia
 
 Hacer un request del tipo POST a:
 http://<localhost:8080>/servicios/rest/localizaciones/localidades
+
 usando x-www-form-urlencoded
 con FormParam nombre fkey y valor el id del partido
 
