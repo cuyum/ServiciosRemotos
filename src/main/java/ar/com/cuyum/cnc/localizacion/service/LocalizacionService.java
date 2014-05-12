@@ -279,13 +279,15 @@ public class LocalizacionService {
 	@SuppressWarnings("unchecked")
 	public List<Area2> buscarAreas2(Long idLocalidad, String term){
 		StringBuilder query = new StringBuilder();
-		query.append("select a from Area2 a where ");
+		query.append("select a from Area2 a where 1=1 ");
 		if(idLocalidad!=-1){
 			query.append("and a.idLocalidad= :localidad ");
+
 		}
 		if(term!=null){
 			query.append("and lower(a.nombre) like '"+term.toLowerCase()+"%' ");
-		}		
+		}
+		
 		List<Area2> lstArea;
 		
 		if(idLocalidad!=-1){
