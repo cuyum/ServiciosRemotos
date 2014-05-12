@@ -77,16 +77,29 @@ public class LocalizacionService {
 	@SuppressWarnings("unchecked")
 	public List<Partido> buscarPartidos(Long idProvincia,String term){
 		StringBuilder query = new StringBuilder();
-		query.append("select p from Partido p ");
-		query.append("where p.idProvincia=:provincia ");
+		
+		query.append("select p from Partido p where 1=1 ");
+		if(idProvincia!=-1){
+			query.append("and p.idProvincia=:provincia ");
+		}
+		
 		if(term!=null){
 			query.append("and lower(p.nombre) like '"+term.toLowerCase()+"%' ");
 		}
-		query.append("order by p.nombre");
 		
-		List<Partido> lstPartidos = em.createQuery(query.toString())
-				.setParameter("provincia", idProvincia)
-				.getResultList();
+		List<Partido> lstPartidos;
+		
+		if(idProvincia!=-1){
+			query.append("order by p.nombre");
+			lstPartidos = em.createQuery(query.toString())
+					.setParameter("provincia", idProvincia)
+					.getResultList();
+		}
+		else {
+			query.append("order by p.idProvincia");
+			lstPartidos = em.createQuery(query.toString()).getResultList();
+		}
+		
 		return lstPartidos;
 	}
 	
@@ -109,6 +122,7 @@ public class LocalizacionService {
 				.setFirstResult(first)
 				.setMaxResults(limit)
 				.getResultList();
+		
 		return lstPartidos;
 	}
 	
@@ -131,16 +145,27 @@ public class LocalizacionService {
 	@SuppressWarnings("unchecked")
 	public List<Localidad> buscarLocalidades(Long idPartido, String term){		
 		StringBuilder query = new StringBuilder();
-		query.append("select l from Localidad l ");
-		query.append("where l.idPartido= :partido ");
+		query.append("select l from Localidad l where 1=1 ");
+		
+		if(idPartido!=-1){
+			query.append("and l.idPartido= :partido ");
+		}
 		if(term!=null){
 			query.append("and lower(l.nombre) like '"+term.toLowerCase()+"%' ");
 		}
-		query.append("order by l.nombre");
+		List<Localidad> lstLocalidades;
 		
-		List<Localidad> lstLocalidades = em.createQuery(query.toString())
-				.setParameter("partido", idPartido)
-				.getResultList();
+		if(idPartido!=-1){
+			query.append("order by l.nombre");
+			lstLocalidades = em.createQuery(query.toString())
+					.setParameter("partido", idPartido)
+					.getResultList();
+		}
+		else {
+			query.append("order by l.idPartido");
+			lstLocalidades = em.createQuery(query.toString()).getResultList();
+		}
+		
 		
 		return lstLocalidades;
 	}
@@ -152,8 +177,10 @@ public class LocalizacionService {
 		int first = (page-1)*limit;
 		
 		StringBuilder query = new StringBuilder();
-		query.append("select l from Localidad l ");
-		query.append("where l.idPartido= :partido ");
+		query.append("select l from Localidad l where 1=1 ");
+		if(idPartido!=-1){
+			query.append("and l.idPartido= :partido ");
+		}
 		if(term!=null){
 			query.append("and lower(l.nombre) like '"+term.toLowerCase()+"%' ");
 		}
@@ -187,17 +214,29 @@ public class LocalizacionService {
 	@SuppressWarnings("unchecked")
 	public List<Area> buscarAreas(Long idLocalidad, String term){
 		StringBuilder query = new StringBuilder();
-		query.append("select a from Area a ");
-		query.append("where a.idLocalidad= :localidad ");
+		query.append("select a from Area a where 1=1 ");
+		if(idLocalidad!=-1){
+			query.append("and a.idLocalidad= :localidad ");
+
+		}
 		if(term!=null){
 			query.append("and lower(a.nombre) like '"+term.toLowerCase()+"%' ");
 		}
-		query.append("order by a.nombre");
 		
-		List<Area> prov = em.createQuery(query.toString())
-				.setParameter("localidad", idLocalidad)
-				.getResultList();
-		return prov;
+		List<Area> lstArea;
+		
+		if(idLocalidad!=-1){
+			query.append("order by a.nombre");
+			lstArea = em.createQuery(query.toString())
+					.setParameter("localidad", idLocalidad)
+					.getResultList();
+		}
+		else {
+			query.append("order by a.idLocalidad");
+			lstArea = em.createQuery(query.toString()).getResultList();
+		}
+		
+		return lstArea;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -240,17 +279,27 @@ public class LocalizacionService {
 	@SuppressWarnings("unchecked")
 	public List<Area2> buscarAreas2(Long idLocalidad, String term){
 		StringBuilder query = new StringBuilder();
-		query.append("select a from Area2 a ");
-		query.append("where a.idLocalidad= :localidad ");
+		query.append("select a from Area2 a where ");
+		if(idLocalidad!=-1){
+			query.append("and a.idLocalidad= :localidad ");
+		}
 		if(term!=null){
 			query.append("and lower(a.nombre) like '"+term.toLowerCase()+"%' ");
-		}
-		query.append("order by a.nombre");
+		}		
+		List<Area2> lstArea;
 		
-		List<Area2> prov = em.createQuery(query.toString())
-				.setParameter("localidad", idLocalidad)
-				.getResultList();
-		return prov;
+		if(idLocalidad!=-1){
+			query.append("order by a.nombre");
+			lstArea = em.createQuery(query.toString())
+					.setParameter("localidad", idLocalidad)
+					.getResultList();
+		}
+		else {
+			query.append("order by a.idLocalidad");
+			lstArea = em.createQuery(query.toString()).getResultList();
+		}
+		
+		return lstArea;
 	}
 
 	@SuppressWarnings("unchecked")

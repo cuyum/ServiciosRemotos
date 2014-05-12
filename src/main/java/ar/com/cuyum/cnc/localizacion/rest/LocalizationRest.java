@@ -26,6 +26,7 @@ import ar.com.cuyum.cnc.localizacion.service.AccesosService;
 import ar.com.cuyum.cnc.localizacion.service.LocalizacionService;
 import ar.com.cuyum.cnc.localizacion.service.PrestadoresService;
 import ar.com.cuyum.cnc.localizacion.vo.ListObject;
+import ar.com.cuyum.cnc.localizacion.vo.ListObjectPadre;
 
 /**
  * @author Jorge Morando
@@ -86,6 +87,7 @@ public class LocalizationRest {
 		RestResponse response = new RestResponse();
 		List<Partido> listaPart = new ArrayList<Partido>();
 		List<ListObject> results = new ArrayList<ListObject>();
+		List<ListObjectPadre> resultado = new ArrayList<ListObjectPadre>();
 		
 		try {
 			if(fkey==null || fkey.isEmpty()){
@@ -103,7 +105,11 @@ public class LocalizationRest {
 			}
 			if(listaPart!=null && listaPart.size()>0){
 				for (Partido partido : listaPart) {
-					results.add(new ListObject(partido.getId().toString(),partido.getNombre()));
+					
+					if(limit==null)
+						resultado.add(new ListObjectPadre(partido.getId().toString(),partido.getNombre(), partido.getIdProvincia().toString()));
+					else
+						results.add(new ListObject(partido.getId().toString(),partido.getNombre()));
 				}
 			}
 			response.setSuccess(true);
@@ -111,7 +117,11 @@ public class LocalizationRest {
 			response.setSuccess(false);
 			log.error(e.getMessage());
 		}
-		response.setResult(results);
+		if(limit==null)
+			response.setResult(resultado);
+		else
+			response.setResult(results);
+		
 		return response;
 	}
 	
@@ -124,6 +134,8 @@ public class LocalizationRest {
 		RestResponse response = new RestResponse();
 		List<Localidad> listaLocal = new ArrayList<Localidad>();
 		List<ListObject> results = new ArrayList<ListObject>();
+		List<ListObjectPadre> resultado = new ArrayList<ListObjectPadre>();
+
 		
 		try {
 			if(fkey==null || fkey.isEmpty()){
@@ -141,7 +153,11 @@ public class LocalizationRest {
 			}
 			if(listaLocal!=null && listaLocal.size()>0){
 				for (Localidad localidad : listaLocal) {
-					results.add(new ListObject(localidad.getId().toString(),localidad.getNombre()));
+					
+					if(limit==null)
+						resultado.add(new ListObjectPadre(localidad.getId().toString(),localidad.getNombre(), localidad.getIdPartido().toString()));
+					else
+						results.add(new ListObject(localidad.getId().toString(),localidad.getNombre()));
 				}
 			}
 			response.setSuccess(true);
@@ -149,7 +165,11 @@ public class LocalizationRest {
 			response.setSuccess(false);
 			log.error(e.getMessage());
 		}
-		response.setResult(results);
+		if(limit==null)
+			response.setResult(resultado);
+		else
+			response.setResult(results);
+		
 		return response;
 	}
 	
@@ -162,6 +182,7 @@ public class LocalizationRest {
 		RestResponse response = new RestResponse();
 		List<Area> listaAreas = new ArrayList<Area>();
 		List<ListObject> results = new ArrayList<ListObject>();
+		List<ListObjectPadre> resultado = new ArrayList<ListObjectPadre>();
 
 		try {
 			if(fkey==null || fkey.isEmpty()){
@@ -179,7 +200,10 @@ public class LocalizationRest {
 			}
 			if(listaAreas!=null && listaAreas.size()>0){
 				for (Area area : listaAreas) {
-					results.add(new ListObject(area.getId().toString(),area.getNombre()));
+					if(limit==null)
+						resultado.add(new ListObjectPadre(area.getId().toString(),area.getNombre(), area.getIdLocalidad().toString()));
+					else
+						results.add(new ListObject(area.getId().toString(),area.getNombre()));
 				}
 			}
 			response.setSuccess(true);
@@ -187,8 +211,13 @@ public class LocalizationRest {
 		} catch (Exception e) {
 			response.setSuccess(false);
 			log.error(e.getMessage());
-		}	
-		response.setResult(results);
+		}
+		
+		if(limit==null)
+			response.setResult(resultado);
+		else
+			response.setResult(results);
+		
 		return response;
 	}
 	
@@ -201,6 +230,7 @@ public class LocalizationRest {
 		RestResponse response = new RestResponse();
 		List<Area2> listaAreas = new ArrayList<Area2>();
 		List<ListObject> results = new ArrayList<ListObject>();
+		List<ListObjectPadre> resultado = new ArrayList<ListObjectPadre>();
 
 		try {
 			if(fkey==null || fkey.isEmpty()){
@@ -218,7 +248,10 @@ public class LocalizationRest {
 			}
 			if(listaAreas!=null && listaAreas.size()>0){
 				for (Area2 area : listaAreas) {
-					results.add(new ListObject(area.getId().toString(),area.getNombre()));
+					if(limit==null)
+						resultado.add(new ListObjectPadre(area.getId().toString(),area.getNombre(), area.getIdLocalidad().toString()));
+					else
+						results.add(new ListObject(area.getId().toString(),area.getNombre()));
 				}
 			}
 			response.setSuccess(true);
@@ -227,7 +260,11 @@ public class LocalizationRest {
 			response.setSuccess(false);
 			log.error(e.getMessage());
 		}	
-		response.setResult(results);
+		if(limit==null)
+			response.setResult(resultado);
+		else
+			response.setResult(results);
+		
 		return response;
 	}
 	
