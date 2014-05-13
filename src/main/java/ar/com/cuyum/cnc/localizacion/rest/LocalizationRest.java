@@ -107,7 +107,7 @@ public class LocalizationRest {
 				for (Partido partido : listaPart) {
 					
 					if(limit==null)
-						resultado.add(new ListObjectPadre(partido.getId().toString(),partido.getNombre(), partido.getIdProvincia().toString()));
+						results.add(new ListObject(partido.getId().toString(),partido.getNombre(), partido.getIdProvincia().toString()));
 					else
 						results.add(new ListObject(partido.getId().toString(),partido.getNombre()));
 				}
@@ -118,7 +118,7 @@ public class LocalizationRest {
 			log.error(e.getMessage());
 		}
 		if(limit==null)
-			response.setResult(resultado);
+			response.setResult(results);
 		else
 			response.setResult(results);
 		
@@ -155,7 +155,7 @@ public class LocalizationRest {
 				for (Localidad localidad : listaLocal) {
 					
 					if(limit==null)
-						resultado.add(new ListObjectPadre(localidad.getId().toString(),localidad.getNombre(), localidad.getIdPartido().toString()));
+						results.add(new ListObject(localidad.getId().toString(),localidad.getNombre(), localidad.getIdPartido().toString()));
 					else
 						results.add(new ListObject(localidad.getId().toString(),localidad.getNombre()));
 				}
@@ -166,7 +166,7 @@ public class LocalizationRest {
 			log.error(e.getMessage());
 		}
 		if(limit==null)
-			response.setResult(resultado);
+			response.setResult(results);
 		else
 			response.setResult(results);
 		
@@ -201,7 +201,7 @@ public class LocalizationRest {
 			if(listaAreas!=null && listaAreas.size()>0){
 				for (Area area : listaAreas) {
 					if(limit==null)
-						resultado.add(new ListObjectPadre(area.getId().toString(),area.getNombre(), area.getIdLocalidad().toString()));
+						results.add(new ListObject(area.getId().toString(),area.getNombre(), area.getIdLocalidad().toString()));
 					else
 						results.add(new ListObject(area.getId().toString(),area.getNombre()));
 				}
@@ -214,7 +214,7 @@ public class LocalizationRest {
 		}
 		
 		if(limit==null)
-			response.setResult(resultado);
+			response.setResult(results);
 		else
 			response.setResult(results);
 		
@@ -249,7 +249,7 @@ public class LocalizationRest {
 			if(listaAreas!=null && listaAreas.size()>0){
 				for (Area2 area : listaAreas) {
 					if(limit==null)
-						resultado.add(new ListObjectPadre(area.getId().toString(),area.getNombre(), area.getIdLocalidad().toString()));
+						results.add(new ListObject(area.getId().toString(),area.getNombre(), area.getIdLocalidad().toString()));
 					else
 						results.add(new ListObject(area.getId().toString(),area.getNombre()));
 				}
@@ -261,7 +261,7 @@ public class LocalizationRest {
 			log.error(e.getMessage());
 		}	
 		if(limit==null)
-			response.setResult(resultado);
+			response.setResult(results);
 		else
 			response.setResult(results);
 		
