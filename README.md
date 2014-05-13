@@ -10,6 +10,7 @@ REST Service para acceso a listas externas para uso de CNC2, tales como:
 - Lista de proveedores
 - Lista de servicios
 - Lista de accesos
+- Lista de Conceptos
 
 1.Objetivo del documento 
 -------------------------
@@ -166,3 +167,37 @@ http://<localhost:8080>/servicios/rest/localizaciones/servicios
 
 obteniendo como RESPONSE:
 {"success":true,"result":[{"id":"610","nombre":"610"},...,...,{"id":"OTROS","nombre":"OTROS"}],"msg":null}
+
+* Para Obtener datos de la lista Concepto
+
+Hacer un request del tipo POST, con  Url parámetro tipo y valor por ej: canal
+http://localhost:8080/servicios/rest/listas?tipo=canal
+
+obteniendo como RESPONSE:
+{
+    "success": true,
+    "result": [
+        {
+            "id": "Atencion_en_Redes_Sociales",
+            "text": "Atención en Redes Sociales / Web / Mail / Postal u otros medios Escritos",
+            "idPadre": ""
+        },
+        {
+            "id": "Atencion_Personalizada_Sucursal",
+            "text": "Atencion Personalizada - Sucursal",
+            "idPadre": ""
+        },
+        {
+            "id": "Atencion_Telefonica",
+            "text": "Atencion Telefonica",
+            "idPadre": ""
+        },
+        {
+            "id": "Otros",
+            "text": "Otros",
+            "idPadre": ""
+        }
+    ],
+    "msg": null,
+    "total": 0
+}
