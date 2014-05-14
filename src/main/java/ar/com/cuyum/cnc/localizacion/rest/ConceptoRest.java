@@ -29,7 +29,7 @@ import ar.com.cuyum.cnc.localizacion.service.PrestadoresService;
 import ar.com.cuyum.cnc.localizacion.vo.ListObject;
 
 /**
- * @author Jorge Morando
+ * @author sci
  *
  */
 @Path("/listas")
@@ -43,9 +43,9 @@ public class ConceptoRest {
 	ConceptoService conceptoService;
 	
 	@POST
+	@Path("/{type}")
 	@Produces(MediaType.APPLICATION_JSON+ ";charset=UTF-8")
-	public RestResponse listas(
-			@QueryParam("tipo") String tipo, @QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {		
+	public RestResponse listas(@PathParam ("type") String tipo, @QueryParam("term") String term, @QueryParam("limit") Integer limit, @QueryParam("page") Integer page) {		
 		RestResponse response = new RestResponse();
 		List<Concepto> lstConceptos;
 		List<ListObject> results = new ArrayList<ListObject>();
@@ -55,7 +55,6 @@ public class ConceptoRest {
 				lstConceptos = conceptoService.buscarConceptos(tipo);		
 			}else{
 				page=page==null?1:page;
-				log.error("<<<<<<<<<<<<<Contenido parametro"+ tipo);
 				lstConceptos = conceptoService.buscarConceptos(tipo,limit,page);	
 				response.setTotal(conceptoService.contarConceptos(tipo));
 			}
