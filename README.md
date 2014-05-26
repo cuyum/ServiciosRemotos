@@ -7,10 +7,15 @@ REST Service para acceso a listas externas para uso de CNC2, tales como:
 - Lista de departamentos/partidos
 - Lista de localidades
 - Lista de área Local
-- Lista de proveedores
+- Lista de área Local2
+- Lista de prestadores
 - Lista de servicios
 - Lista de accesos
-- Lista de Conceptos
+- Lista de conceptos
+- Lista de accesos_servicios
+- Lista de naps
+- Lista de paramentros
+- lista de periodos
 
 1.Objetivo del documento 
 -------------------------
@@ -93,12 +98,20 @@ la siguiente entrada, especificando usuario y password correspondiente:
 	
 3) Ejecutar los scripts de estructura y datos en la BD "servicios" creada
 
-Los scripts de carga inicial están ubicados en ServiciosRemotos/sql/ y son 3:
-
+Los scripts de carga inicial están ubicados en ServiciosRemotos/sql/ deben ejecutarse los scripts de estructura y luego los scripts de datos:
+Para crear las tablas ejecutar:
 ServiciosRemotos/sql/estructuras.sql (crea las tablas)
+ServiciosRemotos/sql/estructuras-delta.sql 
+ServiciosRemotos/sql/updateEstructuras110414.sql 
+ServiciosRemotos/sql/updateEstructuras150414.sql
+Para cargar los datos ejecutar:
 ServiciosRemotos/sql/geograficas.sql (inserción de datos de provincias, partidos, localidades y áreas locales)
-ServiciosRemotos/sql/proveedores.sql (inserción de datos de proveedores)
+ServiciosRemotos/sql/prestadores.sql (inserción de datos de proveedores)
 ServiciosRemotos/sql/otrasTablas.sql (inserción de datos de accesos y servicios)
+ServiciosRemotos/sql/periodos.sql (insercion de datos de periodicidad)
+ServiciosRemotos/sql/naps.sql (inserción de datos de naps)
+ServiciosRemotos/sql/otrosConceptos.sql (inserción de datos de canal, contacto, tipo informacion1, tipo_informacion2, red interna, tecnologia, unidad, medio, tendido, aplicacion, modalidad1, segmento, modalidad2, recarga tipo, anio, institucion, velocidad, velocidadSubida, velocidadBajada, abono, destino, tarifa acceso, plane acceso)
+ServiciosRemotos/sql/updatePeriodos.sql (inserción de datos anual, trimestral ...)
 
 
 4.Despliegue
@@ -153,14 +166,25 @@ Hacer un request del tipo POST a:
 http://<localhost:8080>/servicios/rest/localizaciones/localidades
 
 usando x-www-form-urlencoded
-con FormParam nombre fkey y valor el id del partido
+con FormParam nombre fkey y valor el id del partido, ejemplo fkey  43,
+para obtener todos los datos de la localidad, fkey -1
+
 
 * Para obtener la lista de áreas locales de una localidad
 
+usando x-www-form-urlencoded
+con FormParam nombre fkey y valor el id de la localidad,
+para obtener todos los datos del área usar fkey -1
 Hacer un request del tipo POST a:
 http://<localhost:8080>/servicios/rest/localizaciones/areas
 
-con FormParam nombre fkey y valor el id de la localidad
+* Para obtener la lista de áreas locales2 de una localidad (area local2 lo utilizan los formularios de ict4.2....)
+
+usando x-www-form-urlencoded
+con FormParam nombre fkey y valor el id de la localidad,
+para obtener todos los datos del área usar fkey -1
+Hacer un request del tipo POST a:
+http://<localhost:8080>/servicios/rest/localizaciones/areas2
 
 Hacer un request del tipo POST a:
 http://<localhost:8080>/servicios/rest/localizaciones/servicios
@@ -168,36 +192,19 @@ http://<localhost:8080>/servicios/rest/localizaciones/servicios
 obteniendo como RESPONSE:
 {"success":true,"result":[{"id":"610","nombre":"610"},...,...,{"id":"OTROS","nombre":"OTROS"}],"msg":null}
 
-* Para Obtener datos de la lista Concepto
+* Para Obtener datos de la lista Concepto:
 
-Hacer un request del tipo POST, con  Url parámetro tipo y valor por ej: canal
-http://localhost:8080/servicios/rest/listas?tipo=canal
 
-obteniendo como RESPONSE:
-{
-    "success": true,
-    "result": [
-        {
-            "id": "Atencion_en_Redes_Sociales",
-            "text": "Atención en Redes Sociales / Web / Mail / Postal u otros medios Escritos",
-            "idPadre": ""
-        },
-        {
-            "id": "Atencion_Personalizada_Sucursal",
-            "text": "Atencion Personalizada - Sucursal",
-            "idPadre": ""
-        },
-        {
-            "id": "Atencion_Telefonica",
-            "text": "Atencion Telefonica",
-            "idPadre": ""
-        },
-        {
-            "id": "Otros",
-            "text": "Otros",
-            "idPadre": ""
-        }
-    ],
-    "msg": null,
-    "total": 0
-}
+-Para obtener los datos de lista velocidad
+Usando Post, con opcion: form-data sin parametros
+
+http://<localhost:8080>/servicios/rest/listas/velocidad
+
+* Para Obtener datos de la lista Periodicidad:
+
+usando x-www-form-urlencoded
+con FormParam nombre fkey y valor anual ó trimestral,
+
+http://<localhost:8080>/servicios/rest/periodicidad
+
+
