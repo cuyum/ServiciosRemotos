@@ -99,12 +99,12 @@ la siguiente entrada, especificando usuario y password correspondiente:
 3) Ejecutar los scripts de estructura y datos en la BD "servicios" creada
 
 Los scripts de carga inicial están ubicados en ServiciosRemotos/sql/ deben ejecutarse los scripts de estructura y luego los scripts de datos:
-Para crear las tablas ejecutar:
+* Para crear las tablas ejecutar:
 - ServiciosRemotos/sql/estructuras.sql (crea las tablas)
 - ServiciosRemotos/sql/estructuras-delta.sql 
 - ServiciosRemotos/sql/updateEstructuras110414.sql 
 - ServiciosRemotos/sql/updateEstructuras150414.sql
-- Para cargar los datos ejecutar:
+* Para cargar los datos ejecutar:
 - ServiciosRemotos/sql/geograficas.sql (inserción de datos de provincias, partidos, localidades y áreas locales)
 - ServiciosRemotos/sql/prestadores.sql (inserción de datos de proveedores)
 - ServiciosRemotos/sql/otrasTablas.sql (inserción de datos de accesos y servicios)
