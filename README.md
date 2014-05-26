@@ -100,17 +100,17 @@ la siguiente entrada, especificando usuario y password correspondiente:
 
 Los scripts de carga inicial están ubicados en ServiciosRemotos/sql/ deben ejecutarse los scripts de estructura y luego los scripts de datos:
 Para crear las tablas ejecutar:
-ServiciosRemotos/sql/estructuras.sql (crea las tablas)
-ServiciosRemotos/sql/estructuras-delta.sql 
-ServiciosRemotos/sql/updateEstructuras110414.sql 
-ServiciosRemotos/sql/updateEstructuras150414.sql
-Para cargar los datos ejecutar:
-ServiciosRemotos/sql/geograficas.sql (inserción de datos de provincias, partidos, localidades y áreas locales)
-ServiciosRemotos/sql/prestadores.sql (inserción de datos de proveedores)
-ServiciosRemotos/sql/otrasTablas.sql (inserción de datos de accesos y servicios)
-ServiciosRemotos/sql/periodos.sql (insercion de datos de periodicidad)
-ServiciosRemotos/sql/naps.sql (inserción de datos de naps)
-ServiciosRemotos/sql/otrosConceptos.sql (inserción de datos de canal, contacto, tipo informacion1, tipo_informacion2, red interna, tecnologia, unidad, medio, tendido, aplicacion, modalidad1, segmento, modalidad2, recarga tipo, anio, institucion, velocidad, velocidadSubida, velocidadBajada, abono, destino, tarifa acceso, plane acceso)
+- ServiciosRemotos/sql/estructuras.sql (crea las tablas)
+- ServiciosRemotos/sql/estructuras-delta.sql 
+- ServiciosRemotos/sql/updateEstructuras110414.sql 
+- ServiciosRemotos/sql/updateEstructuras150414.sql
+- Para cargar los datos ejecutar:
+- ServiciosRemotos/sql/geograficas.sql (inserción de datos de provincias, partidos, localidades y áreas locales)
+- ServiciosRemotos/sql/prestadores.sql (inserción de datos de proveedores)
+- ServiciosRemotos/sql/otrasTablas.sql (inserción de datos de accesos y servicios)
+- ServiciosRemotos/sql/periodos.sql (insercion de datos de periodicidad y parametros)
+- ServiciosRemotos/sql/naps.sql (inserción de datos de naps)
+- ServiciosRemotos/sql/otrosConceptos.sql (inserción de datos de canal, contacto, tipo informacion1, tipo_informacion2, red interna, tecnologia, unidad, medio, tendido, aplicacion, modalidad1, segmento, modalidad2, recarga tipo, anio, institucion, velocidad, velocidadSubida, velocidadBajada, abono, destino, tarifa acceso, plane acceso)
 ServiciosRemotos/sql/updatePeriodos.sql (inserción de datos anual, trimestral ...)
 
 
