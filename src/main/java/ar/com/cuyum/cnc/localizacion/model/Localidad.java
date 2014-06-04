@@ -5,9 +5,11 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
+@IdClass(value=LocalidadPK.class)
 @Table(name="localidades") //@Table(name="localidades_poblacion")
 public class Localidad implements Serializable {
 	
@@ -17,23 +19,13 @@ public class Localidad implements Serializable {
 	@Column(name="id_localidad")
 	private Long id;
 	
+	@Id
 	@Column(name="id_partido")
 	private Long idPartido;
-	
-//	@Column(name="id_area_local")
-//	private Long idArea;
-	
+		
 	public Long getIdPartido() {
 		return idPartido;
 	}
-
-//	public Long getIdArea() {
-//		return idArea;
-//	}
-//
-//	public void setIdArea(Long idArea) {
-//		this.idArea = idArea;
-//	}
 
 	public void setIdPartido(Long idPartido) {
 		this.idPartido = idPartido;
@@ -59,4 +51,46 @@ public class Localidad implements Serializable {
 	}
 
 	
+}
+class LocalidadPK  implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Long id;
+	private Long idPartido;
+	
+	public LocalidadPK(){}
+	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Long getIdPartido() {
+		return idPartido;
+	}
+
+	public void setIdPartido(Long idPartido) {
+		this.idPartido = idPartido;
+	}
+
+	/** Se implementa el metodo hashCode() de esta forma */
+    public int hashCode() {
+        return (int) id.hashCode();
+    }
+
+    /** Se implementa el metodo equals() de esta forma */
+    public boolean equals (Object obj){
+        if (obj == this) return true;
+        if (!(obj instanceof Partido)) return false;
+        if (obj == null) return false;
+        LocalidadPK par = (LocalidadPK) obj;
+        return par.id == id && par.idPartido.equals(id);
+    }
 }

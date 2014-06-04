@@ -226,13 +226,13 @@ public class LocalizacionService {
 		List<Area> lstArea;
 		
 		if(idLocalidad!=-1){
-			query.append("order by a.nombre");
+			query.append("order by a.idLocalidad");
 			lstArea = em.createQuery(query.toString())
 					.setParameter("localidad", idLocalidad)
 					.getResultList();
 		}
 		else {
-			query.append("order by a.idLocalidad");
+			query.append("order by a.nombre");
 			lstArea = em.createQuery(query.toString()).getResultList();
 		}
 		
